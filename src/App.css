@@ -91,3 +91,67 @@
 .animation-delay-2000 {
   animation-delay: 2s;
 }
+
+/* Improved text readability */
+p {
+  line-height: 1.8;
+  font-size: 1rem;
+  max-width: 75ch; /* Optimal line length for readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+/* Improve button interaction */
+button, a.button, .btn {
+  position: relative;
+  overflow: hidden;
+}
+
+button:active, a.button:active, .btn:active {
+  transform: translateY(1px);
+}
+
+/* Goal gradient effect - make progress visible */
+.progress-container {
+  background: rgba(236, 161, 166, 0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-bar {
+  height: 0.5rem;
+  background: linear-gradient(90deg, #ECA1A6 0%, #E75480 100%);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Improve focus states for accessibility */
+:focus {
+  outline: 2px solid #ECA1A6;
+  outline-offset: 2px;
+}
+
+/* Chunking content for better readability */
+.content-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(236, 161, 166, 0.2);
+}
+
+/* Improve tap targets for mobile (Fitts's Law) */
+@media (max-width: 768px) {
+  button, a.button, .btn, .input, input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  nav a, .nav-link {
+    padding: 0.75rem;
+    margin: 0.25rem;
+  }
+}

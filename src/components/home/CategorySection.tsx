@@ -1,6 +1,8 @@
 
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ChevronRight } from 'lucide-react';
 
 interface Category {
   id: string;
@@ -30,6 +32,7 @@ const CategorySection = ({ categories, onSelectCategory }: CategorySectionProps)
         <h2 className="text-2xl md:text-3xl font-serif font-bold text-center mb-4 text-mother-dark">Explore by Category</h2>
         <p className="text-center mb-8 max-w-2xl mx-auto text-gray-600">Discover stories and insights that resonate with the warmth of a mother's love</p>
         
+        {/* Categories grid - chunked into a grid for easier scanning (Chunking Law) */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8">
           {categories.map((category) => (
             <div 
@@ -40,6 +43,9 @@ const CategorySection = ({ categories, onSelectCategory }: CategorySectionProps)
                 : 'hover:shadow-lg hover:scale-[1.02]'
               }`}
               onClick={() => handleCategoryClick(category.id)}
+              role="button"
+              aria-pressed={selectedCategory === category.id}
+              tabIndex={0}
             >
               <div className="aspect-square relative">
                 <img 
@@ -59,6 +65,18 @@ const CategorySection = ({ categories, onSelectCategory }: CategorySectionProps)
             </div>
           ))}
         </div>
+        
+        {/* Call to action - Goal Gradient Effect */}
+        {selectedCategory && (
+          <div className="mt-10 text-center animate-fade-in">
+            <Button variant="action" asChild>
+              <Link to={`/categories?selected=${selectedCategory}`}>
+                View All {categories.find(c => c.id === selectedCategory)?.name} Articles
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

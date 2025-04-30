@@ -87,14 +87,40 @@
     @apply bg-background text-foreground;
     background-image: linear-gradient(135deg, rgba(250, 218, 221, 0.3) 0%, rgba(255, 248, 240, 0.3) 100%);
     background-attachment: fixed;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif font-semibold tracking-tight;
+    letter-spacing: -0.015em;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
   }
 
   p, a, button, span {
     @apply font-sans;
+  }
+
+  /* Improve readability */
+  p {
+    @apply leading-relaxed mb-4 text-base;
+    max-width: 75ch;
+  }
+
+  /* Improve focus states for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-mother-dark ring-offset-2;
   }
 }
 
@@ -125,14 +151,17 @@
     @apply bg-white rounded-xl shadow-md border border-mother-light/50 backdrop-filter backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.01];
   }
 
+  /* Consistent button styling */
   .mother-button {
-    @apply px-4 py-2 bg-mother-dark text-white rounded-lg hover:bg-opacity-90 transition-transform duration-300 transform hover:scale-[1.02] hover:shadow-md;
+    @apply px-5 py-2.5 bg-mother-dark text-white rounded-lg font-medium shadow-sm hover:bg-mother-dark/90 transition-all duration-300 flex items-center justify-center gap-2;
   }
 
+  /* Improved input styling */
   .mother-input {
-    @apply px-4 py-2 border border-mother-light rounded-lg focus:outline-none focus:ring-2 focus:ring-mother-dark focus:border-transparent;
+    @apply px-4 py-2.5 border-2 border-mother-light rounded-lg focus:outline-none focus:ring-2 focus:ring-mother-dark focus:border-transparent w-full text-base;
   }
   
+  /* Animations */
   .floating-animation {
     @apply animate-float;
   }
@@ -141,11 +170,36 @@
     @apply shadow-[0_0_15px_rgba(236,161,166,0.8)];
   }
 
+  /* Improved scroll animations */
   .fade-in-section {
     @apply opacity-0 transform translate-y-4 transition-all duration-500;
   }
 
   .fade-in-section.is-visible {
     @apply opacity-100 translate-y-0;
+  }
+
+  /* Chunking patterns */
+  .content-chunk {
+    @apply mb-8 pb-6 border-b border-mother-light/30;
+  }
+
+  /* Goal gradient effect */
+  .progress-indicator {
+    @apply h-1.5 bg-mother-light/30 rounded-full overflow-hidden;
+  }
+
+  .progress-value {
+    @apply h-full bg-gradient-to-r from-mother-light to-mother-dark transition-all duration-500;
+  }
+
+  /* Group related items - Gestalt principles */
+  .related-group {
+    @apply p-4 bg-mother-warmth/50 rounded-lg mb-6;
+  }
+
+  /* Fitts's Law - larger touch targets */
+  .touch-target {
+    @apply p-3 min-h-[44px] min-w-[44px] flex items-center justify-center;
   }
 }

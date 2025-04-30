@@ -1,8 +1,13 @@
 
 import ArticleDetail from '@/components/articles/ArticleDetail';
+import PageLayout from '@/components/layout/PageLayout';
 
 const ArticlePage = () => {
-  return <ArticleDetail />;
+  return (
+    <PageLayout>
+      <ArticleDetail />
+    </PageLayout>
+  );
 };
 
 export default ArticlePage;

@@ -64,9 +64,12 @@ export default {
           ring: 'hsl(var(--sidebar-ring))'
         },
         mother: {
-          light: '#FFF0F5',
-          DEFAULT: '#FFB6C1',
-          dark: '#C71585',
+          light: '#FFF0F5',  // Softer, lighter pink
+          DEFAULT: '#FFB6C1', // Soft pink
+          dark: '#E75480',    // Warmer pink
+          warmth: '#FDE1D3',  // Soft peach
+          comfort: '#E5DEFF', // Soft purple
+          love: '#FEF7CD',    // Soft yellow
         }
       },
       fontFamily: {
@@ -119,7 +122,7 @@ export default {
               fontWeight: '700'
             },
             a: {
-              color: '#C71585',
+              color: '#E75480',
               '&:hover': {
                 color: '#FFB6C1',
               },
@@ -127,6 +130,11 @@ export default {
           },
         },
       },
+      backgroundImage: {
+        'mother-gradient': 'linear-gradient(135deg, #FFF0F5 0%, #FDE1D3 100%)',
+        'mother-card': 'linear-gradient(180deg, #FFF0F5 0%, #FDE1D3 100%)',
+        'mother-comfort': 'linear-gradient(to right, #FFE29F 0%, #FFA99F 48%, #FF719A 100%)',
+      }
     }
   },
   plugins: [

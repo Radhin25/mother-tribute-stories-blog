@@ -11,7 +11,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 bg-gradient-to-b from-mother-light/30 to-mother-warmth/30">
         {children}
       </main>
       <Footer />

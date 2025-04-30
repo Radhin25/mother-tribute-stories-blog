@@ -2,12 +2,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Search, X } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchExpanded, setSearchExpanded] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const toggleSearch = () => {
+    setSearchExpanded(!searchExpanded);
   };
 
   return (
@@ -22,9 +28,33 @@ const Header = () => {
           <Link to="/" className="font-medium hover:text-mother-dark transition-colors">Home</Link>
           <Link to="/categories" className="font-medium hover:text-mother-dark transition-colors">Categories</Link>
           <Link to="/about" className="font-medium hover:text-mother-dark transition-colors">About</Link>
-          <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Search">
-            <Search size={20} />
-          </button>
+          <div className="relative flex items-center">
+            {searchExpanded ? (
+              <div className="flex items-center animate-fade-in">
+                <Input
+                  type="search"
+                  placeholder="Search..."
+                  className="w-48 h-9 pr-9 focus:outline-none rounded-full border-mother-light focus:border-mother-comfort"
+                  autoFocus
+                />
+                <button 
+                  className="absolute right-2 p-1 hover:bg-gray-100 rounded-full transition-colors"
+                  onClick={toggleSearch}
+                  aria-label="Close search"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            ) : (
+              <button 
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors" 
+                onClick={toggleSearch}
+                aria-label="Search"
+              >
+                <Search size={20} />
+              </button>
+            )}
+          </div>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -54,10 +84,14 @@ const Header = () => {
               <Link to="/" className="font-medium hover:text-mother-dark transition-colors" onClick={toggleMobileMenu}>Home</Link>
               <Link to="/categories" className="font-medium hover:text-mother-dark transition-colors" onClick={toggleMobileMenu}>Categories</Link>
               <Link to="/about" className="font-medium hover:text-mother-dark transition-colors" onClick={toggleMobileMenu}>About</Link>
-              <button className="flex items-center gap-2 font-medium hover:text-mother-dark transition-colors">
-                <Search size={20} />
-                Search
-              </button>
+              <div className="relative w-full max-w-xs">
+                <Input
+                  type="search"
+                  placeholder="Search..."
+                  className="w-full pr-9 focus:outline-none rounded-full border-mother-light"
+                />
+                <Search className="absolute right-3 top-1/2 transform -translate-y-1/2" size={18} />
+              </div>
             </nav>
           </div>
         </div>
